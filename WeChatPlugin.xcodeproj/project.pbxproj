@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38A78E141FEA180200B6EC6A /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A78E121FEA180200B6EC6A /* HttpHelper.m */; };
+		38A78E151FEA180200B6EC6A /* HttpHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 38A78E131FEA180200B6EC6A /* HttpHelper.h */; };
+		38A78E171FEA1A6A00B6EC6A /* Constant.h in Headers */ = {isa = PBXBuildFile; fileRef = 38A78E161FEA1A6A00B6EC6A /* Constant.h */; };
 		522547CF1F4AE5A700226A2A /* NSView+Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 522547CD1F4AE5A700226A2A /* NSView+Action.h */; };
 		522547D01F4AE5A700226A2A /* NSView+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 522547CE1F4AE5A700226A2A /* NSView+Action.m */; };
 		522547DE1F4C312A00226A2A /* TKAutoReplyWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 522547D71F4C312A00226A2A /* TKAutoReplyWindowController.h */; };
@@ -54,6 +57,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38A78E121FEA180200B6EC6A /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		38A78E131FEA180200B6EC6A /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		38A78E161FEA1A6A00B6EC6A /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		522547CD1F4AE5A700226A2A /* NSView+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Action.h"; sourceTree = "<group>"; };
 		522547CE1F4AE5A700226A2A /* NSView+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Action.m"; sourceTree = "<group>"; };
 		522547D71F4C312A00226A2A /* TKAutoReplyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAutoReplyWindowController.h; sourceTree = "<group>"; };
@@ -239,6 +245,9 @@
 		52B5CEF51F3B4631000D9DD9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				38A78E161FEA1A6A00B6EC6A /* Constant.h */,
+				38A78E131FEA180200B6EC6A /* HttpHelper.h */,
+				38A78E121FEA180200B6EC6A /* HttpHelper.m */,
 				52B5CEF61F3B4631000D9DD9 /* WeChat+hook.h */,
 				52B5CEF71F3B4631000D9DD9 /* WeChat+hook.m */,
 				52475C2C1F6B993E00760E3E /* MMChatsTableCellView+hook.h */,
@@ -326,8 +335,10 @@
 				52B5CF1C1F3B4631000D9DD9 /* XMLReader.h in Headers */,
 				52B5CF161F3B4631000D9DD9 /* TKRemoteControlController.h in Headers */,
 				523848AB1F70E73500771BA3 /* NSTextField+Action.h in Headers */,
+				38A78E151FEA180200B6EC6A /* HttpHelper.h in Headers */,
 				52B5CF121F3B4631000D9DD9 /* WeChat+hook.h in Headers */,
 				52475C321F6BA43800760E3E /* TKIgnoreSessonModel.h in Headers */,
+				38A78E171FEA1A6A00B6EC6A /* Constant.h in Headers */,
 				526F4D8D1F4AAC3800E46004 /* TKRemoteControlCell.h in Headers */,
 				52B5CF181F3B4631000D9DD9 /* TKRemoteControlModel.h in Headers */,
 				522547CF1F4AE5A700226A2A /* NSView+Action.h in Headers */,
@@ -440,6 +451,7 @@
 				522547D01F4AE5A700226A2A /* NSView+Action.m in Sources */,
 				523848AC1F70E73500771BA3 /* NSTextField+Action.m in Sources */,
 				526F4D8E1F4AAC3800E46004 /* TKRemoteControlCell.m in Sources */,
+				38A78E141FEA180200B6EC6A /* HttpHelper.m in Sources */,
 				526F4D841F4AAC1900E46004 /* TKAutoReplyModel.m in Sources */,
 				526F4D8C1F4AAC3800E46004 /* TKAutoReplyContentView.m in Sources */,
 				522547DF1F4C312A00226A2A /* TKAutoReplyWindowController.m in Sources */,
