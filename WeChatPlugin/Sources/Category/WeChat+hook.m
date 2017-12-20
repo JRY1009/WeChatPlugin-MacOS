@@ -175,6 +175,17 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
  
  */
 - (void)hook_onRevokeMsg:(id)msg {
+
+    
+    GroupStorage *groupStorage = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("GroupStorage")];
+
+    NSArray* groupCacheKeys = [groupStorage getGroupContactCacheKeys];
+    for (id key in groupCacheKeys)
+    {
+        id group = [groupStorage getGroupContactCache:key];
+        NSLog(@"%@", group);
+    }
+    
     if (![[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
         [self hook_onRevokeMsg:msg];
         return;

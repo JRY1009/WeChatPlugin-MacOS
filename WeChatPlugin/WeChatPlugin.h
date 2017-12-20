@@ -80,7 +80,39 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 @interface ContactStorage : NSObject
 - (id)GetSelfContact;
 - (id)GetContact:(id)arg1;
+- (id)GetAllFriendContacts;
+- (id)GetAllFavContacts;
+- (id)GetContactList:(unsigned int)arg1 ContactType:(unsigned int)arg2;
+- (id)GetContactWithUserName:(id)arg1 updateIfNeeded:(BOOL)arg2;
+- (id)GetContactsWithUserNames:(id)arg1;
+- (id)init;
+- (id)genTencentNewsContact;
+- (id)genContactDataFromModContact:(id)arg1;
+- (id)allKeysOfContactCache;
+- (id)getContactCache:(id)arg1;
+- (id)getContactFromModContact:(id)arg1;
+- (id)GenBrandHolderContact;
+- (id)GetAllBrandContacts;
 @end
+
+@interface GroupStorage : NSObject
+- (id)GetAllGroups;
+- (id)GetGroupMemberListWithGroupUserName:(id)arg1;
+- (id)GetGroupMemberListWithGroupUserName:(id)arg1 limit:(unsigned int)arg2;
+- (id)GetGroupContactList:(unsigned int)arg1 ContactType:(unsigned int)arg2;
+- (id)GetGroupMemberContact:(id)arg1;
+- (id)GetGroupContactsWithUserNames:(id)arg1;
+- (id)GetGroupContact:(id)arg1;
+- (id)init;
+- (id)genGroupMemberFromRoomInfo:(id)arg1;
+- (id)genGroupMemberFromModContact:(id)arg1;
+- (id)genGroupContactFromModContact:(id)arg1 dicGroupMember:(id)arg2;
+- (id)getGroupMemberContactCache:(id)arg1;
+- (id)getGroupContactCacheKeys;
+- (id)getGroupContactCache:(id)arg1;
+- (id)contactWithMemberResp:(id)arg1;
+@end
+
 
 @interface WCContactData : NSObject
 @property(retain, nonatomic) NSString *m_nsUsrName; // @synthesize m_nsUsrName;
