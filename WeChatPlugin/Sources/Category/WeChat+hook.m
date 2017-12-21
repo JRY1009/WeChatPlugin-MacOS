@@ -32,6 +32,9 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     //      置底
     tk_hookMethod(objc_getClass("MMSessionMgr"), @selector(sortSessions), [self class], @selector(hook_sortSessions));
     
+    //      微信发文件
+    tk_hookMethod(objc_getClass("MessageService"), @selector(SendFileAppMsgTo:fileName:filePath:), [self class], @selector(hook_onSendFileAppMsgTo:fileName:filePath:));
+    
     [self setup];
     [self replaceAboutFilePathMethod];
 }
@@ -267,6 +270,20 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
             [self replySelfWithMsg:addMsg];
         }
     }];
+}
+
+/**
+ hook 微信发送文件
+ 
+ */
+- (void)hook_onSendFileAppMsgTo:(id)arg1 fileName:(id)arg2 filePath:(id)arg3 {
+    [self hook_onSendFileAppMsgTo:arg1 fileName:arg2 filePath:arg3];
+    
+    NSLog(@"%@", arg1);
+    NSLog(@"%@", arg2);
+    NSLog(@"%@", arg3);
+    
+    // TODO 获取用户标识，文件信息，做好匹配，上传到自己的服务器
 }
 
 - (void)hook_onLoginButtonClicked:(NSButton *)btn {

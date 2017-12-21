@@ -45,6 +45,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)onRevokeMsg:(id)arg1;
 - (void)OnSyncBatchAddMsgs:(NSArray *)arg1 isFirstSync:(BOOL)arg2;
 - (id)SendTextMessage:(id)arg1 toUsrName:(id)arg2 msgText:(id)arg3 atUserList:(id)arg4;
+- (id)SendFileAppMsgTo:(id)arg1 fileName:(id)arg2 filePath:(id)arg3;
 - (id)GetMsgData:(id)arg1 svrId:(long)arg2;
 - (void)AddLocalMsg:(id)arg1 msgData:(id)arg2;
 @end
