@@ -15,6 +15,30 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 #pragma mark - 微信原始的部分类与方法
 
+@protocol AccountServiceExt <NSObject>
+@optional
+- (void)onGetOnlineInfoFinished;
+- (void)onCurrentDeviceLockStateChanged:(BOOL)arg1;
+- (void)onCurrentDeviceLockStateWillChange:(BOOL)arg1;
+- (void)onCurrentNetworkLockStateWillChange:(BOOL)arg1;
+- (void)onUserLogout;
+- (void)onAuthLocked;
+- (void)onAuthUpdateCert;
+- (void)onAuthNeedUpdate:(int)arg1;
+- (void)onAuthAlphaVersion:(NSString *)arg1;
+- (void)onAuthNeedImageCode:(NSData *)arg1;
+- (void)onAuthNeedSMSCode:(NSString *)arg1 withAuthTicket:(NSString *)arg2;
+- (void)onAuthOkNeedReload;
+- (void)onAuthKickOutWithReason:(NSString *)arg1 errorMsg:(NSString *)arg2;
+- (void)onAuthKeyInfoInvalid:(NSString *)arg1;
+- (void)onPreAuthOKOfUser:(NSString *)arg1;
+- (void)onAuthFaildForInvalidCGISessionID;
+- (void)onAuthFaildWithWrongPasswordOrUsername;
+- (void)onAuthFaild:(NSString *)arg1;
+- (void)onManualAuthHalfOK;
+- (void)onAuthOK:(BOOL)arg1;
+@end
+
 @interface MMLoginOneClickViewController : NSObject
 @property(nonatomic) NSTextField *descriptionLabel;
 - (void)onLoginButtonClicked:(id)arg1;
@@ -29,6 +53,25 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (void)ManualLogin:(id)arg1 withPassword:(id)arg2;
 - (void)ManualLogout;
 - (void)QRCodeLoginWithUserName:(id)arg1 password:(id)arg2;
+- (void)onRSACertUpdateFail;
+- (void)onRSACertUpdated;
+- (void)onCertNeedUpdate;
+- (void)UpdateCert;
+- (void)onIDCRedirect:(id)arg1;
+- (void)onAuthNeedUpdate:(int)arg1;
+- (void)onAuthAlphaVersion:(id)arg1;
+- (void)onAuthNeedSMSCode:(id)arg1 withAuthTicket:(id)arg2;
+- (void)onAuthNeedImageCode:(id)arg1;
+- (void)onAuthKeyInfoInvalidOfUser:(id)arg1 nickName:(id)arg2;
+- (void)onAuthPushLoginURL:(id)arg1 errorMsg:(id)arg2;
+- (void)onAuthKickOutWithReason:(id)arg1 errorMsg:(id)arg2;
+- (void)onAuthFaildWithWrongPasswordOrUsername;
+- (void)onAuthFaildForInvalidCGISessionID;
+- (void)onAuthFaild:(id)arg1;
+- (void)onAuthOKOfUser:(id)arg1 withSessionKey:(id)arg2 withServerId:(id)arg3 autoAuthKey:(id)arg4 isAutoAuth:(BOOL)arg5;
+- (void)onManualAuthFinalOK;
+- (void)onManualAuthHalfOKWithSessionKey:(id)arg1 withServerId:(id)arg2 autoAuthKey:(id)arg3;
+- (void)onPreAuthOKOfUser:(id)arg1 nickName:(id)arg2;
 @end
 
 @interface MMLoginViewController : NSObject
@@ -48,6 +91,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 - (id)SendFileAppMsgTo:(id)arg1 fileName:(id)arg2 filePath:(id)arg3;
 - (id)GetMsgData:(id)arg1 svrId:(long)arg2;
 - (void)AddLocalMsg:(id)arg1 msgData:(id)arg2;
+- (BOOL)updateFileInformationInDBWithMessage:(id)arg1;
 @end
 
 @interface MMServiceCenter : NSObject
@@ -175,6 +219,7 @@ FOUNDATION_EXPORT const unsigned char WeChatPluginVersionString[];
 
 @interface LogoutCGI : NSTableCellView
 - (void)sendLogoutCGIWithCompletion:(id)arg1;
+- (void)logoutCallback:(BOOL)arg1;
 @end
 
 #pragma mark - 调用 NSSearchPathForDirectoriesInDomains 的一些方法

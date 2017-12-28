@@ -7,7 +7,6 @@
 //
 
 #import "WeChat+hook.h"
-#import "WeChatPlugin.h"
 #import "XMLReader.h"
 #import "TKRemoteControlController.h"
 #import "TKAutoReplyWindowController.h"
@@ -24,16 +23,26 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     tk_hookMethod(objc_getClass("MessageService"), @selector(onRevokeMsg:), [self class], @selector(hook_onRevokeMsg:));
     //      微信消息同步
     tk_hookMethod(objc_getClass("MessageService"), @selector(OnSyncBatchAddMsgs:isFirstSync:), [self class], @selector(hook_OnSyncBatchAddMsgs:isFirstSync:));
+    
+    tk_hookMethod(objc_getClass("AccountService"), @selector(onAuthPushLoginURL:errorMsg:), [self class], @selector(hook_onAuthPushLoginURL:errorMsg:));
+    
+    
     //      微信多开
     tk_hookClassMethod(objc_getClass("CUtility"), @selector(HasWechatInstance), [self class], @selector(hook_HasWechatInstance));
     //      免认证登录
     tk_hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(onLoginButtonClicked:), [self class], @selector(hook_onLoginButtonClicked:));
     tk_hookMethod(objc_getClass("LogoutCGI"), @selector(sendLogoutCGIWithCompletion:), [self class], @selector(hook_sendLogoutCGIWithCompletion:));
+    
+    tk_hookMethod(objc_getClass("LogoutCGI"), @selector(logoutCallback:), [self class], @selector(hook_logoutCallback:));
+
     //      置底
     tk_hookMethod(objc_getClass("MMSessionMgr"), @selector(sortSessions), [self class], @selector(hook_sortSessions));
     
     //      微信发文件
     tk_hookMethod(objc_getClass("MessageService"), @selector(SendFileAppMsgTo:fileName:filePath:), [self class], @selector(hook_onSendFileAppMsgTo:fileName:filePath:));
+    
+    tk_hookMethod(objc_getClass("MessageService"), @selector(updateFileInformationInDBWithMessage:), [self class], @selector(hook_onUpdateFileInformationInDBWithMessage:));
+
     
     [self setup];
     [self replaceAboutFilePathMethod];
@@ -165,6 +174,20 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
 }
 
 #pragma mark - hook 微信方法
+
+
+- (void)onUserLogout{
+    NSLog(@"aaaaaa");
+}
+
+- (void)hook_onAuthPushLoginURL:(id)arg1 errorMsg:(id)arg2{
+    [self hook_onAuthPushLoginURL:arg1 errorMsg:arg2];
+        NSLog(@"%@", arg1);
+        NSLog(@"%@", arg2);
+}
+- (void)hook_logoutCallback:(BOOL)arg1{
+    NSLog(@"aaaaaa");
+}
 /**
  hook 微信是否已启动
  
@@ -284,6 +307,14 @@ static char tkRemoteControlWindowControllerKey;     //  远程控制窗口的关
     NSLog(@"%@", arg3);
     
     // TODO 获取用户标识，文件信息，做好匹配，上传到自己的服务器
+}
+
+- (BOOL)hook_onUpdateFileInformationInDBWithMessage:(id)arg1 {
+    [self hook_onUpdateFileInformationInDBWithMessage:arg1];
+    
+    NSLog(@"%@", arg1);
+    
+    return true;
 }
 
 - (void)hook_onLoginButtonClicked:(NSButton *)btn {

@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WeChatPlugin.h"
 
-@interface NSObject (WeChatHook)
+@interface NSObject (WeChatHook) <AccountServiceExt>
 
 + (void)hookWeChat;
+
+- (void)onUserLogout;
 
 @end
